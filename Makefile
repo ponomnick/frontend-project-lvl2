@@ -8,3 +8,5 @@ lint:
 	npx eslint .
 lint-fix:
 	npx eslint --fix .
+tests:
+	NODE_OPTIONS=--experimental-vm-modules npx jest

@@ -1,15 +1,17 @@
 import { cwd } from 'node:process';
 import { readFileSync } from 'node:fs';
+import fs from 'fs';
 import _ from 'lodash';
 import path from 'path';
 
-const getData = (pathToFile) => {
+export const getData = (pathToFile) => {
   const currentDir = cwd();
+  console.log(currentDir)
   const absolutePath = path.resolve(currentDir, pathToFile);
   const contentFile = readFileSync(absolutePath, 'utf-8');
   return JSON.parse(contentFile);
 };
-const stringify = (data, replacer = ' ', spacesCount = 2) => {
+export const stringify = (data, replacer = ' ', spacesCount = 2) => {
   const iter = (value, depth) => {
     if (typeof value !== 'object' || value === null) {
       return String(value);
@@ -36,7 +38,6 @@ const genDiff = (filepath1, filepath2) => {
   const uniqFile = { ...file1, ...file2 };
 
   const keys = Object.keys(uniqFile);
-  // const result = [];
   const sortKeys = _.sortBy(keys)
     .reduce((diff, key) => {
       const result = diff;
