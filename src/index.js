@@ -1,5 +1,5 @@
-import { cwd } from 'node:process';
-import { readFileSync } from 'node:fs';
+import { cwd } from 'process';
+import { readFileSync } from 'fs';
 // import fs from 'fs';
 import _ from 'lodash';
 import path from 'path';
