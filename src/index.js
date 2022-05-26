@@ -1,12 +1,12 @@
 import { cwd } from 'node:process';
 import { readFileSync } from 'node:fs';
-import fs from 'fs';
+// import fs from 'fs';
 import _ from 'lodash';
 import path from 'path';
 
 export const getData = (pathToFile) => {
   const currentDir = cwd();
-  console.log(currentDir)
+  console.log(currentDir);
   const absolutePath = path.resolve(currentDir, pathToFile);
   const contentFile = readFileSync(absolutePath, 'utf-8');
   return JSON.parse(contentFile);
