@@ -4,21 +4,14 @@ import fs from 'fs';
 import path, { dirname } from 'path';
 import genDiff from '../src/index.js';
 
-//
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-console.log(__filename)
-console.log(__dirname)
-const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', __filename);
-const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
-// console.log(__dirname);
-// console.log(readFile(file1));
-test('diff', () => {
-  const file1 = readFile('file1.json').trim();
-  const file2 = readFile('file2.json').trim();
-  const diff = readFile('diff.json').trim();
 
-  const result = genDiff(file1, file2);
-  //console.log(result);
+const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
+const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
+
+test('diff', () => {
+  const diff = readFile('diff.json').trim();
+  const result = genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'));
   expect(result).toEqual(diff);
 });
