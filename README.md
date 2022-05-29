@@ -8,3 +8,6 @@
 
 <a href="https://asciinema.org/a/497266?autoplay=1"><img src="https://asciinema.org/a/497266.png" width="auto"/></a>
 
+[Demo gendiff yaml](https://asciinema.org/a/497847)
+
+<a href="https://asciinema.org/a/497847?autoplay=1"><img src="https://asciinema.org/a/497847.png" width="auto"/></a>
