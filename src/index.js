@@ -1,16 +1,17 @@
-import { cwd } from 'process';
-import { readFileSync } from 'fs';
-// import fs from 'fs';
+// import { readFileSync } from 'fs';
+import fs from 'fs';
 import _ from 'lodash';
+import { cwd } from 'process';
 import path from 'path';
+import getDataParse from './parsers.js';
 
-export const getData = (pathToFile) => {
+const getData = (pathToFile) => {
   const currentDir = cwd();
-  console.log(currentDir);
   const absolutePath = path.resolve(currentDir, pathToFile);
-  const contentFile = readFileSync(absolutePath, 'utf-8');
-  return JSON.parse(contentFile);
+  const contentFile = fs.readFileSync(absolutePath, 'utf-8');
+  return contentFile;
 };
+
 export const stringify = (data, replacer = ' ', spacesCount = 2) => {
   const iter = (value, depth) => {
     if (typeof value !== 'object' || value === null) {
@@ -32,8 +33,10 @@ export const stringify = (data, replacer = ' ', spacesCount = 2) => {
 };
 
 const genDiff = (filepath1, filepath2) => {
-  const file1 = getData(filepath1);
-  const file2 = getData(filepath2);
+  const fileExt1 = path.extname(filepath1);
+  const fileExt2 = path.extname(filepath2);
+  const file1 = getDataParse(getData(filepath1), fileExt1);
+  const file2 = getDataParse(getData(filepath2), fileExt2);
 
   const uniqFile = { ...file1, ...file2 };
 
