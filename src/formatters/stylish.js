@@ -18,24 +18,18 @@ const stylish = (tree) => {
   const iter = (data, depth) => data.map((node) => {
     const getValue = (value, replacer) => `${indent(depth)}${replacer} ${node.key}: ${stringify(value, depth)}\n`;
     switch (node.status) {
-      case 'added': {
+      case 'added':
         return getValue(node.value, '+');
-      }
-      case 'delete': {
+      case 'delete':
         return getValue(node.value, '-');
-      }
-      case 'changed': {
+      case 'changed':
         return `${getValue(node.value1, '-')}${getValue(node.value2, '+')}`;
-      }
-      case 'unchanged': {
+      case 'unchanged':
         return getValue(node.value, ' ');
-      }
-      case 'parent': {
+      case 'parent':
         return `${indent(depth)}  ${node.key}: {\n${iter(node.children, depth + 1).join('')}${indent(depth)}  }\n`;
-      }
-      default: {
+      default:
         throw new Error(`Несуществующий статус: ${node.status}`);
-      }
     }
   });
   return `{\n${iter(tree, 1).join('')}}`;
