@@ -15,35 +15,29 @@ const stringify = (value, depth) => {
 };
 
 const stylish = (tree) => {
-  const iter = (data, depth) => {
-    const result = data
-      .map((node) => {
-        const getValue = (value, replacer) => `${indent(depth)}${replacer} ${node.key}: ${stringify(value, depth)}\n`;
-
-        const { status } = node;
-        switch (status) {
-          case 'added': {
-            return getValue(node.value, '+');
-          }
-          case 'delete': {
-            return getValue(node.value, '-');
-          }
-          case 'changed': {
-            return `${getValue(node.value1, '-')}${getValue(node.value2, '+')}`;
-          }
-          case 'unchanged': {
-            return getValue(node.value, ' ');
-          }
-          case 'parent': {
-            return `${indent(depth)}  ${node.key}: {\n${iter(node.children, depth + 1).join('')}${indent(depth)}  }\n`;
-          }
-          default: {
-            throw new Error(`Несуществующий статус: ${status}`);
-          }
-        }
-      });
-    return result;
-  };
+  const iter = (data, depth) => data.map((node) => {
+    const getValue = (value, replacer) => `${indent(depth)}${replacer} ${node.key}: ${stringify(value, depth)}\n`;
+    switch (node.status) {
+      case 'added': {
+        return getValue(node.value, '+');
+      }
+      case 'delete': {
+        return getValue(node.value, '-');
+      }
+      case 'changed': {
+        return `${getValue(node.value1, '-')}${getValue(node.value2, '+')}`;
+      }
+      case 'unchanged': {
+        return getValue(node.value, ' ');
+      }
+      case 'parent': {
+        return `${indent(depth)}  ${node.key}: {\n${iter(node.children, depth + 1).join('')}${indent(depth)}  }\n`;
+      }
+      default: {
+        throw new Error(`Несуществующий статус: ${node.status}`);
+      }
+    }
+  });
   return `{\n${iter(tree, 1).join('')}}`;
 };
 
