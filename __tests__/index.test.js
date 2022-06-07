@@ -11,13 +11,13 @@ const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', 
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 
 test('diff json', () => {
-  const diff = readFile('diff.json').trim();
-  const result = genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'));
+  const diff = readFile('diffcomplex').trim();
+  const result = genDiff(getFixturePath('complexfile1.json'), getFixturePath('complexfile2.json'));
   expect(result).toEqual(diff);
 });
 
 test('diff yaml', () => {
-  const diff = readFile('diff.yml').trim();
+  const diff = readFile('diffcomplex').trim();
   const result = genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'));
   expect(result).toEqual(diff);
 });

@@ -6,8 +6,11 @@
 
 [Demo gendiff](https://asciinema.org/a/497266)
 
-<a href="https://asciinema.org/a/497266?autoplay=1"><img src="https://asciinema.org/a/497266.png" width="auto"/></a>
+[![asciicast](https://asciinema.org/a/497266.svg)](https://asciinema.org/a/497266)
 
 [Demo gendiff yaml](https://asciinema.org/a/497847)
 
-<a href="https://asciinema.org/a/497847?autoplay=1"><img src="https://asciinema.org/a/497847.png" width="auto"/></a>
+[![asciicast](https://asciinema.org/a/497847.svg)](https://asciinema.org/a/497847)
+
+[Demo gendiff complex](https://asciinema.org/a/499968)
+[![asciicast](https://asciinema.org/a/499968.svg)](https://asciinema.org/a/499968)
