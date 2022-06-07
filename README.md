@@ -12,5 +12,5 @@
 
 [![asciicast](https://asciinema.org/a/497847.svg)](https://asciinema.org/a/497847)
 
-[Demo gendiff complex](https://asciinema.org/a/499968)
-[![asciicast](https://asciinema.org/a/499968.svg)](https://asciinema.org/a/499968)
+[Demo gendiff complex](https://asciinema.org/a/499969)
+[![asciicast](https://asciinema.org/a/499969.svg)](https://asciinema.org/a/499969)
