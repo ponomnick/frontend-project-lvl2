@@ -26,7 +26,7 @@ const plain = (tree) => {
           return `Property '${property}' was added with value: ${stringify(node.value)}`;
 
         case 'delete':
-          return `Property '${property}' was deleted`;
+          return `Property '${property}' was removed`;
         case 'changed':
           return `Property '${property}' was updated. From ${stringify(node.value1)} to ${stringify(node.value2)}`;
         case 'parent':
