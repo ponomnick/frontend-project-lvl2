@@ -17,3 +17,5 @@
 [Demo gendiff plain](https://asciinema.org/a/500954)
 [![asciicast](https://asciinema.org/a/500954.svg)](https://asciinema.org/a/500954)
 
+[Demo gendiff json](https://asciinema.org/a/500959)
+[![asciicast](https://asciinema.org/a/500959.svg)](https://asciinema.org/a/500959)
