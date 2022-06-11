@@ -12,5 +12,4 @@ program
   })
   .arguments('<filepath1> <filepath2>')
   .option('-f, --format <type>', 'output format', 'stylish')
-  .option('-f, --format <type>', 'output format', 'plain')
   .parse(process.argv);
