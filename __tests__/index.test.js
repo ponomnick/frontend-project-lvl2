@@ -21,3 +21,8 @@ test('diff yaml', () => {
   const result = genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'));
   expect(result).toEqual(diff);
 });
+test('diff plain', () => {
+  const diff = readFile('diffplain').trim();
+  const result = genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'), 'plain');
+  expect(result).toEqual(diff);
+});
