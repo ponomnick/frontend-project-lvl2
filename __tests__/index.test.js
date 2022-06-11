@@ -10,19 +10,21 @@ const __dirname = dirname(__filename);
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 
-test('diff json', () => {
+test('diff stylish', () => {
   const diff = readFile('diffcomplex').trim();
-  const result = genDiff(getFixturePath('complexfile1.json'), getFixturePath('complexfile2.json'));
-  expect(result).toEqual(diff);
+  const resultYml = genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'));
+  const resultJson = genDiff(getFixturePath('complexfile1.json'), getFixturePath('complexfile2.json'));
+  expect(resultYml).toEqual(diff);
+  expect(resultJson).toEqual(diff);
 });
 
-test('diff yaml', () => {
-  const diff = readFile('diffcomplex').trim();
-  const result = genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'));
-  expect(result).toEqual(diff);
-});
 test('diff plain', () => {
   const diff = readFile('diffplain').trim();
   const result = genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'), 'plain');
   expect(result).toEqual(diff);
+});
+test('diff json.stringify', () => {
+  const diffJsonStringify = readFile('json').trim();
+  const result = genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'), 'json');
+  expect(result).toEqual(diffJsonStringify);
 });
